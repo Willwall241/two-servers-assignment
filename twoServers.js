@@ -4,21 +4,27 @@ var portOne = 7000;
 
 var portTwo = 7500;
 
-function handleRequest (request, response) {
+function handleRequestOne (request, response) {
 
   response.end("Good Job, that did the trick! Path Hit: " + request.url)
 }
 
-var server = http.createServer(handleRequest);
+function handleRequestTwo (request, response) {
+
+  response.end("Good Job, your a butt face Path Hit: " + request.url)
+}
+
+var server = http.createServer(handleRequestOne);
+var servertwo = http.createServer(handleRequestTwo)
 
 server.listen(portOne, function() {
 
-  console.log("Well, Your a good looking chap!")
+  console.log("Server listening on: http://localhost:" + portOne)
 
 });
 
-server.listen(portTwo, function() {
+servertwo.listen(portTwo, function() {
 
-  console.log("You suck butts and dont work hard enough you lazy bum!")
+  console.log("Server listening on: http://localhost:" + portTwo)
   
 });
